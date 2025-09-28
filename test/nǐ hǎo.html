@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nǐ hǎo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>你好 - nǐ hǎo - hola</h1>
+
+<script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+
+<div class="show-writing-characters">
+<div class="characters-row">
+  <div id="character-target-1"></div>
+  <div id="character-target-2"></div>
+</div>
+<button id="animate-button">Muestrame cómo se escribe</button>
+</div>
+
+<script>
+
+var char1 = HanziWriter.create('character-target-1', '你', {
+  width: 200,
+  height: 200,
+  padding: 5,
+  showCharacter: false
+});
+var char2 = HanziWriter.create('character-target-2', '好', {
+  width: 200,
+  height: 200,
+  padding: 5,
+  showCharacter: false
+});
+
+function chainAnimations() {
+  var delayBetweenAnimations = 1000; // milliseconds
+  char1.hideCharacter();
+  char2.hideCharacter();
+
+  char1.animateCharacter({
+    onComplete: function() {
+      setTimeout(function() {
+        char2.animateCharacter();
+      }, delayBetweenAnimations);
+    }
+  });
+}
+
+document.getElementById('animate-button').addEventListener('click', chainAnimations);  
+    </script>
+
+<!-- ...existing code... -->
+ <div class="show-quiz-characters">
+<div class="characters-quiz-row">
+  <div id="character-quiz-target-1"></div>
+  <div id="character-quiz-target-2"></div>
+</div>
+<button id="quiz-button">Quiz: Escribe los caracteres</button>
+</div>
+<!-- ...existing code... -->
+<script>
+  var charQ1 = HanziWriter.create('character-quiz-target-1', '你', {
+    width: 200,
+    height: 200,
+    padding: 5,
+    showCharacter: false
+  });
+  var charQ2 = HanziWriter.create('character-quiz-target-2', '好', {
+    width: 200,
+    height: 200,
+    padding: 5,
+    showCharacter: false
+  });
+
+  function startQuiz() {
+    charQ1.quiz();
+    charQ2.quiz();
+  }
+
+  document.getElementById('quiz-button').addEventListener('click', startQuiz);
+
+  // ...tu código de animación puede ir aquí si lo necesitas...
+</script>
+
+
+<div class="explanation">
+  <div>
+    en general se escribe de arriba a abajo y de izquierda a derecha, y “primero horizontales, luego verticales”
+  </div>
+  <div class="columns">
+    <div class="col1">
+      <div class="character-info">
+  <h2>你 (nǐ) — 7 trazos</h2>
+  <h3>Radical 亻 (persona)</h3>
+  <ol>
+    <li>izquierda: diagonal descendente izquierda — 撇 (piě)</li>
+    <li>izquierda: vertical — 竖 (shù)</li>
+  </ol>
+  <h3>Componente 尔 (ěr)</h3>
+  <ol start="3">
+    <li>diagonal izq. — 撇 (piě)</li>
+    <li>horizontal-diagonal — 横撇 (héng-piě)</li>
+    <li>vertical con gancho — 竖钩 (shùgōu)</li>
+    <li>diagonal izq. — 撇 (piě)</li>
+    <li>punto — 点 (diǎn)</li>
+  </ol>
+</div> 
+    </div>
+    <div class="col2">
+      <div class="character-info">
+  <h2>好 (hǎo) — 6 trazos</h2>
+  <h3>Radical 女 (mujer)</h3>
+  <ol>
+    <li>diagonal-punto — 撇点 (piě-diǎn)</li>
+    <li>diagonal izq. — 撇 (piě)</li>
+    <li>horizontal — 横 (héng)</li>
+  </ol>
+  <h3>Componente 子 (niño)</h3>
+  <ol start="4">
+    <li>horizontal-diagonal — 横撇 (héng-piě)</li>
+    <li>vertical con gancho — 竖钩 (shùgōu)</li>
+    <li>horizontal — 横 (héng)</li>
+  </ol>
+</div>
+    </div>
+  </div>
+</div>
+<br>
+</body>
+
+</html>

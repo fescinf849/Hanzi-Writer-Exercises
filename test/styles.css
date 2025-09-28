@@ -1,0 +1,49 @@
+.characters-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* Opcional: centra horizontalmente */
+  align-items: center;     /* Opcional: centra verticalmente */
+  gap: 20px;               /* Espacio entre los caracteres */
+}
+
+.characters-quiz-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* Opcional: centra horizontalmente */
+  align-items: center;     /* Opcional: centra verticalmente */
+  gap: 20px;               /* Espacio entre los caracteres */
+}
+
+.word-row {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Espacio entre el texto y el altavoz */
+}
+.word, .TTS {
+  margin: 0;
+}
+
+.explanation {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #333;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: blanchedalmond;
+}
+
+.explanation {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.explanation .columns {
+  display: flex;
+  gap: 32px;
+}
+
+.explanation .col1,
+.explanation .col2 {
+  width: 45%;
+}
