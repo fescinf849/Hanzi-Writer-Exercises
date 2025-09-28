@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>duì bu qǐ</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+<div class="word-row">
+  <h1 class="word">对不起 - duì bu qǐ - Lo siento</h1>
+  <h1 class="TTS">
+    <i class="word_audio fa fa-volume-up" data-audio_url="https://yabla.b-cdn.net/media.yabla.com/audio/362888.mp3"></i>
+  </h1>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+
+<div class="show-writing-characters">
+<div class="characters-row">
+  <div id="character-target-1"></div>
+  <div id="character-target-2"></div>
+  <div id="character-target-3"></div>
+</div>
+<button id="animate-button">Muestrame cómo se escribe</button>
+</div>
+
+<script>
+
+var char1 = HanziWriter.create('character-target-1', '对', {
+  width: 200,
+  height: 200,
+  padding: 5,
+  showCharacter: false
+});
+var char2 = HanziWriter.create('character-target-2', '不', {
+  width: 200,
+  height: 200,
+  padding: 5,
+  showCharacter: false
+});
+var char3 = HanziWriter.create('character-target-3', '起', {
+  width: 200,
+  height: 200,
+  padding: 5,
+  showCharacter: false
+});
+
+
+function chainAnimations() {
+  var delayBetweenAnimations = 1000; // milliseconds
+  char1.hideCharacter();
+  char2.hideCharacter();
+  char3.hideCharacter();
+
+  char1.animateCharacter({
+    onComplete: function() {
+      setTimeout(function() {
+        char2.animateCharacter({
+          onComplete: function() {
+            setTimeout(function() {
+              char3.animateCharacter();
+            }, delayBetweenAnimations);
+          }
+        });
+      }, delayBetweenAnimations);
+    }
+  });
+}
+
+document.getElementById('animate-button').addEventListener('click', chainAnimations);  
+    </script>
+
+<!-- ...existing code... -->
+ <div class="show-quiz-characters">
+<div class="characters-quiz-row">
+  <div id="character-quiz-target-1"></div>
+  <div id="character-quiz-target-2"></div>
+  <div id="character-quiz-target-3"></div>
+</div>
+<button id="quiz-button">Quiz: Escribe los caracteres</button>
+</div>
+<!-- ...existing code... -->
+<script>
+  var charQ1 = HanziWriter.create('character-quiz-target-1', '对', {
+    width: 200,
+    height: 200,
+    padding: 5,
+    showCharacter: false
+  });
+  var charQ2 = HanziWriter.create('character-quiz-target-2', '不', {
+    width: 200,
+    height: 200,
+    padding: 5,
+    showCharacter: false
+  });
+  var charQ3 = HanziWriter.create('character-quiz-target-3', '起', {
+    width: 200,
+    height: 200,
+    padding: 5,
+    showCharacter: false
+  });
+
+
+  function startQuiz() {
+    charQ1.quiz();
+    charQ2.quiz();
+    charQ3.quiz();
+  }
+
+  document.getElementById('quiz-button').addEventListener('click', startQuiz);
+
+  // ...tu código de animación puede ir aquí si lo necesitas...
+</script>
+
+  <script>
+    // Reproduce el audio al hacer clic en el altavoz
+    document.querySelector('.word_audio').addEventListener('click', function() {
+      var audioUrl = this.getAttribute('data-audio_url');
+      var audio = new Audio(audioUrl);
+      audio.play();
+    });
+  </script>
+
+</html>
